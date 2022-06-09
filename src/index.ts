@@ -4,12 +4,15 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 import { indexController } from "./controllers/controllers";
 import morgan from "morgan";
+import path from "path";
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app: Express = express();
 
 app.set("view engine", "ejs");
+app.use(express.static(path.join(process.cwd(), 'views/public')));
 
+console.log()
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(bodyParser.json());
